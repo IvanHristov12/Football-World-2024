@@ -6,6 +6,7 @@ import Register from "./components/register/Register"
 import AboutUs from "./components/aboutus/AboutUs"
 import PrivacyPolicy from "./components/privacyPolicy/PrivacyPolicy"
 import Footer from "./components/footer/Footer"
+import NotFound from "./components/notFound/NotFound"
 
 function App() {
     return (
@@ -19,9 +20,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="*" element={<NotFound />} />
                 
             </Routes>
-            
+
             <Footer />
         </div>
     )
