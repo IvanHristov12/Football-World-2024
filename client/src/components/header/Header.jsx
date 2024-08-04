@@ -1,4 +1,7 @@
 import { useState } from 'react'
+
+import { Link } from 'react-router-dom'
+
 import {
     Dialog,
     DialogPanel,
@@ -10,10 +13,12 @@ import {
     PopoverGroup,
     PopoverPanel,
 } from '@headlessui/react'
+
 import {
     Bars3Icon,
     XMarkIcon,
 } from '@heroicons/react/24/outline'
+
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 import { FR, DE, IT, ES, GB } from 'country-flag-icons/react/3x2'
@@ -21,11 +26,11 @@ import { FR, DE, IT, ES, GB } from 'country-flag-icons/react/3x2'
 const competitions = [
 
 
-    { name: 'England', description: 'Premier League', href: '#', icon: GB },
-    { name: 'Spain', description: 'LaLiga', href: '#', icon: ES },
-    { name: 'Italy', description: 'Serie A', href: '#', icon: IT },
-    { name: 'Germany', description: 'Bundesliga', href: '#', icon: DE },
-    { name: 'France', description: 'Ligue 1', href: '#', icon: FR },
+    { name: 'England', description: 'Premier League', to: '#', icon: GB },
+    { name: 'Spain', description: 'LaLiga', to: '#', icon: ES },
+    { name: 'Italy', description: 'Serie A', to: '#', icon: IT },
+    { name: 'Germany', description: 'Bundesliga', to: '#', icon: DE },
+    { name: 'France', description: 'Ligue 1', to: '#', icon: FR },
 ]
 
 export default function Header() {
@@ -35,10 +40,10 @@ export default function Header() {
         <header className="absolute inset-x-0 top-0 z-50">
             <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5 p-1.5">
+                    <Link to="/" className="-m-1.5 p-1.5">
                         <span className="sr-only"></span>
                         <img alt="" src="/images/logo.png" className="h-8 w-auto" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button
@@ -71,10 +76,10 @@ export default function Header() {
                                             <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
                                         </div>
                                         <div className="flex-auto">
-                                            <a href={item.href} className="block font-semibold text-gray-900">
+                                            <Link to={item.to} className="block font-semibold text-gray-900">
                                                 {item.name}
                                                 <span className="absolute inset-0" />
-                                            </a>
+                                            </Link>
                                             <p className="mt-1 text-gray-600">{item.description}</p>
                                         </div>
                                     </div>
@@ -84,34 +89,34 @@ export default function Header() {
                         </PopoverPanel>
                     </Popover>
 
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    <Link to="/forum" className="text-sm font-semibold leading-6 text-gray-900">
                         Forum
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    </Link>
+                    <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
                         Marketplace
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    </Link>
+                    <Link to="/aboutus" className="text-sm font-semibold leading-6 text-gray-900">
                         About us
-                    </a>
+                    </Link>
                 </PopoverGroup>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    <Link to="login" className="text-sm font-semibold leading-6 text-gray-900">
                         Log in <span aria-hidden="true">&rarr;</span>
-                    </a>
+                    </Link>
                 </div>
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-10" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <Link to="/" className="-m-1.5 p-1.5">
                             <span className="sr-only"></span>
                             <img
                                 alt=""
                                 src="/images/logo.png"
                                 className="h-8 w-auto"
                             />
-                        </a>
+                        </Link>
                         <button
                             type="button"
                             onClick={() => setMobileMenuOpen(false)}
@@ -134,7 +139,7 @@ export default function Header() {
                                             <DisclosureButton
                                                 key={item.name}
                                                 as="a"
-                                                href={item.href}
+                                                to={item.to}
                                                 className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                             >
                                                 {item.name}
@@ -142,32 +147,32 @@ export default function Header() {
                                         ))}
                                     </DisclosurePanel>
                                 </Disclosure>
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/forum"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Forum
-                                </a>
-                                <a
-                                    href="#"
+                                </Link>
+                                <Link
+                                    to="#"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Marketplace
-                                </a>
-                                <a
-                                    href="#"
+                                </Link>
+                                <Link
+                                    to="/aboutus"
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     About us
-                                </a>
+                                </Link>
                             </div>
                             <div className="py-6">
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/login"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Log in
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
