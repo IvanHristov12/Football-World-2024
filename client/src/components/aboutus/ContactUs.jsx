@@ -86,7 +86,7 @@ export default function ContactUs() {
             </div>
             <Label className="text-sm leading-6 text-gray-600">
               By selecting this, you agree to our{' '}
-              <Link to="/p" className="font-semibold text-indigo-600">
+              <Link to="/privacy-policy" className="font-semibold text-indigo-600">
                 privacy&nbsp;policy
               </Link>
               .
