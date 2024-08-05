@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom"
 
-
 import Header from "./components/header/Header"
 import Home from "./components/home/Home"
 import Login from "./components/login/Login"
@@ -11,6 +10,7 @@ import Footer from "./components/footer/Footer"
 import NotFound from "./components/notFound/NotFound"
 import ForumCatalogue from "./components/forum/ForumCatalogue"
 import CreatePost from "./components/forum/createPost/createPost"
+import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
 
 function App() {
     return (
@@ -23,6 +23,8 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/forum" element={<ForumCatalogue />} />
+                <Route path="/forum/:postId" element={<ForumPostDetails />} />
+
                 <Route path="createpost" element={<CreatePost />} />
                 <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
