@@ -12,8 +12,9 @@ Softuni React Project
  - [x] Setup react-router-dom
  - [x] Add routes in App.jsx 
  - [x] Add links in navigation 
-## 3. Create Service Layer
+## 3. Create Custom Fetch hook
  - [x] Custom useFetch Hook
+ - [x] Preseed practice server
 ## 4. Page Implementation
  - [x] Home
  - [ ] Competitions

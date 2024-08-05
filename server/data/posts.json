@@ -1,0 +1,14 @@
+{
+    "81e16041-3dd5-42ba-9d9d-e5565dc11e68": {
+        "title": "Sample Post 1",
+        "description": "Sample description 1",
+        "author": "John Doe",
+        "_id": "81e16041-3dd5-42ba-9d9d-e5565dc11e68"
+    },
+    "39cd9c9a-1565-4f62-acf5-4f16848cf765": {
+        "title": "Sample Post 2",
+        "description": "Sample description 2",
+        "author": "Michael Owen",
+        "_id": "39cd9c9a-1565-4f62-acf5-4f16848cf765"
+    }
+}
