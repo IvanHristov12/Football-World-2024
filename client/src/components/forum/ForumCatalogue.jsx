@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import CreatePost from './createPost/createPost';
 import { useFetch } from '../../hooks/useFetch';
 import Spinner from '../spinner/Spinner';
+import PostListItem from './PostListItem';
+
 
 export default function ForumCatalogue() {
 
@@ -34,13 +36,7 @@ export default function ForumCatalogue() {
 
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {posts.map((post) => (
-                                <div key={post._id} className="p-4 border rounded-md shadow-sm">
-                                    <Link to={`/forum/${post._id}`} className="text-xl font-semibold text-indigo-600 hover:underline">{post.title}</Link>
-                                    <p className="mt-2 text-gray-800">{post.description}</p>
-                                    <p className="mt-4 text-sm text-gray-500">By {post.author}</p>
-                                </div>
-                            ))}
+                            {posts.map((post) => <PostListItem key={post._id} {...post}/>)}
                         </div>
                     )}
                 </div>

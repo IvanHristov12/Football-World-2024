@@ -18,7 +18,9 @@ export function useFetch(url, initialData, method = "GET", body = null) {
             try {
                 const response = await fetch(url, options);
                 const result = await response.json();
-                setData(result);
+                const posts = Object.values(result);
+                
+                setData(posts);
             } catch (error) {
                 console.log("Error fetching data:", error);
             } finally {
