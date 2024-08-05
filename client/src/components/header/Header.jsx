@@ -25,7 +25,6 @@ import { FR, DE, IT, ES, GB } from 'country-flag-icons/react/3x2'
 
 const competitions = [
 
-
     { name: 'England', description: 'Premier League', to: '#', icon: GB },
     { name: 'Spain', description: 'LaLiga', to: '#', icon: ES },
     { name: 'Italy', description: 'Serie A', to: '#', icon: IT },

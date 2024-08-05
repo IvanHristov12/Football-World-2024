@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useFetch({ url, initialData, method = "GET", body = null }) {
+export function useFetch(url, initialData, method = "GET", body = null) {
     const [data, setData] = useState(initialData);
     const [isFetching, setIsFetching] = useState(true);
     const [toggleRefetch, setToggleRefetch] = useState(false);
@@ -8,7 +8,6 @@ export function useFetch({ url, initialData, method = "GET", body = null }) {
     useEffect(() => {
         (async () => {
             setIsFetching(true);
-
             const options = {
                 method,
                 headers: {
@@ -17,9 +16,8 @@ export function useFetch({ url, initialData, method = "GET", body = null }) {
                 body: method === "POST" ? JSON.stringify(body) : null
             };
             try {
-                const response = await fetch(url);
+                const response = await fetch(url, options); 
                 const result = await response.json();
-
                 setData(result);
             } catch (error) {
                 console.log("Error fetching data:", error);
@@ -31,7 +29,7 @@ export function useFetch({ url, initialData, method = "GET", body = null }) {
 
     const refetch = () => {
         setToggleRefetch(state => !state);
-    }
+    };
 
     return {
         data,
@@ -39,6 +37,3 @@ export function useFetch({ url, initialData, method = "GET", body = null }) {
         refetch
     };
 }
-
-// works only for GET requests
-// refetch helps with refreshing the request if needed
