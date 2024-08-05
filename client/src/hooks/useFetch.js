@@ -13,7 +13,7 @@ export function useFetch(url, initialData, method = "GET", body = null) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: method === "POST" || method === "DELETE" ? JSON.stringify(body) : null
+                body: method === "POST" || method === "PUT" || method === "PATCH" || method === "DELETE" ? JSON.stringify(body) : null
             };
             try {
                 const response = await fetch(url, options);
