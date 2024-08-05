@@ -1,10 +1,8 @@
-import { redirect } from "react-router-dom";
-
-export default function CreatePost() {
+export default function CreatePost({ onClose }) {
     return (
         <div
             className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75"
-            onClick={() => {(redirect('/forum'))}}
+            onClick={onClose}
         >
             <div
                 className="bg-white p-10 rounded-lg shadow-lg w-full max-w-3xl"

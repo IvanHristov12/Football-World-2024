@@ -20,17 +20,16 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/forum" element={<ForumCatalogue />} />
+                <Route path="createpost" element={<CreatePost />} />
+                <Route path="/aboutus" element={<AboutUs />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/forum" element={<ForumCatalogue />} > 
-                    <Route path="createpost" element={<CreatePost />} /> 
-                </Route>
 
 
                 <Route path="*" element={<NotFound />} />
-                
+
             </Routes>
 
             <Footer />
