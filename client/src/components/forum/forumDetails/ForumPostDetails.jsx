@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch"
+import Spinner from "../../spinner/Spinner";
 
 export default function ForumPostDetails() {
     // use custom useFetch hook here
-    const { postId } =useParams();
+    const { postId } = useParams();
     const url = `http://localhost:3030/jsonstore/posts/${postId}`;
-    const { data } = useFetch(url, [])
+    const { data, isFetching } = useFetch(url, [])
     //console.log(data);
-    
+
 
     return (
         <div className="relative isolate overflow-hidden bg-white h-screen flex items-center justify-center px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -37,13 +38,18 @@ export default function ForumPostDetails() {
                     <rect fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" width="100%" height="100%" strokeWidth={0} />
                 </svg>
             </div>
-            <div className="text-center lg:max-w-2xl mx-auto -mt-80">
-                <p className="text-base font-semibold leading-7 text-indigo-600">{data[2]}</p>
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[0]}</h1>
-                <p className="mt-6 text-xl leading-8 text-gray-700">
-                    {data[1]}
-                </p>
-            </div>
+            {isFetching ? (
+                <Spinner />
+            ) : (
+
+                <div className="text-center lg:max-w-2xl mx-auto -mt-80">
+                    <p className="text-base font-semibold leading-7 text-indigo-600">{data[2]}</p>
+                    <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[0]}</h1>
+                    <p className="mt-6 text-xl leading-8 text-gray-700">
+                        {data[1]}
+                    </p>
+                </div>
+            )}
         </div>
     )
 }
