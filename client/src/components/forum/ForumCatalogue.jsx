@@ -31,12 +31,16 @@ export default function ForumCatalogue() {
 
                 <div className="mt-10">
                     {isFetching ? (
-
                         <Spinner />
-
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {posts.map((post) => <PostListItem key={post._id} {...post}/>)}
+                            {posts.length > 0 ? (
+                                posts.map((post) => (
+                                    <PostListItem key={post._id} {...post} />
+                                ))
+                            ) : (
+                                <p className="text-center text-gray-600">There are no posts yet</p>
+                            )}
                         </div>
                     )}
                 </div>
