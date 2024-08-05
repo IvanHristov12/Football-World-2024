@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+import { useFetch } from "../../../hooks/useFetch"
 
 export default function ForumPostDetails() {
-    const [post, setPost] = useState({});
-    const { postId } = useParams();
-
-    useEffect(() => {
-        (async () => {
-            const response = await fetch('');
-        })();
-    }, [])
-
     // use custom useFetch hook here
+    const { postId } =useParams();
+    const url = `http://localhost:3030/jsonstore/posts/${postId}`;
+    const { data } = useFetch(url, [])
+    //console.log(data);
+    
 
     return (
         <div className="relative isolate overflow-hidden bg-white h-screen flex items-center justify-center px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -42,10 +38,10 @@ export default function ForumPostDetails() {
                 </svg>
             </div>
             <div className="text-center lg:max-w-2xl mx-auto -mt-80">
-                <p className="text-base font-semibold leading-7 text-indigo-600">username</p>
-                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">title holder</h1>
+                <p className="text-base font-semibold leading-7 text-indigo-600">{data[2]}</p>
+                <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[0]}</h1>
                 <p className="mt-6 text-xl leading-8 text-gray-700">
-                    description/content holder
+                    {data[1]}
                 </p>
             </div>
         </div>

@@ -26,4 +26,7 @@ Softuni React Project
  - [x] Login
  - [x] Register
  - [x] Forum
+   - [x] Post Details Link
+   - [x] Details route
+   - [ ] Details page
  - [x] About us 
