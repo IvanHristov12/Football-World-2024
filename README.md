@@ -1,5 +1,6 @@
 # Football World 2024
-Softuni React Project 
+This is a React SPA project meant to handle basic CRUD operations. 
+Serving as a project for Softuni React 2024
 
 ## 1. Initialize Project
  - [x] Initialize git repository
