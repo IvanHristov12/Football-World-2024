@@ -91,9 +91,6 @@ export default function Header() {
                     <Link to="/forum" className="text-sm font-semibold leading-6 text-gray-900">
                         Forum
                     </Link>
-                    <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
-                        Marketplace
-                    </Link>
                     <Link to="/aboutus" className="text-sm font-semibold leading-6 text-gray-900">
                         About us
                     </Link>
@@ -151,12 +148,6 @@ export default function Header() {
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Forum
-                                </Link>
-                                <Link
-                                    to="#"
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                                >
-                                    Marketplace
                                 </Link>
                                 <Link
                                     to="/aboutus"

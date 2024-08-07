@@ -1,17 +1,49 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../../hooks/useFetch"
+import { useFetch } from "../../../hooks/useFetch";
 import Spinner from "../../spinner/Spinner";
+import { useEffect, useState } from "react";
+import commentsApi from "../../../api/comments-api";
+import postAPI from "../../../api/posts-api";
 
 export default function ForumPostDetails() {
-    // use custom useFetch hook here
+    const [post, setPost] = useState({});
+
     const { postId } = useParams();
     const url = `http://localhost:3030/jsonstore/posts/${postId}`;
-    const { data, isFetching } = useFetch(url, [])
-    //console.log(data);
+    const { data, isFetching } = useFetch(url, []);
 
+    const [username, setUsername] = useState('');
+    const [comment, setComment] = useState('');
+
+
+    useEffect(() => {
+        (async () => {
+            const result = await postAPI.getOne(postId);
+
+            setPost(result);
+        })()
+    }, [])
+
+    const commentSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const newComment = await commentsApi.create(postId, username, comment);
+
+        setPost(prevState => ({
+            ...prevState,
+            comments: {
+                ...prevState.comments,
+                [newComment._id]: newComment,
+            }
+        }))
+
+        setUsername('');
+        setComment('');
+
+    }
 
     return (
-        <div className="relative isolate overflow-hidden bg-white h-screen flex items-center justify-center px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+        <div className="relative isolate overflow-hidden bg-white h-screen px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <svg
                     aria-hidden="true"
@@ -41,15 +73,62 @@ export default function ForumPostDetails() {
             {isFetching ? (
                 <Spinner />
             ) : (
+                <div className="lg:max-w-2xl mx-auto mt-16">
+                    <div className="text-center">
+                        <p className="text-base font-semibold leading-7 text-indigo-600">{data[2]}</p>
+                        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[0]}</h1>
+                        <p className="mt-6 text-xl leading-8 text-gray-700">{data[1]}</p>
+                    </div>
+                    <div className="mt-6 flex items-center justify-center space-x-4">
+                        <button
+                            type="button"
+                            className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            Like
+                        </button>
+                        <span className="text-xl text-gray-700">0 Likes</span>
+                    </div>
+                    <div className="mt-12">
+                        <h2 className="text-2xl font-bold text-gray-900">Comments</h2>
+                        <form className="mt-6" onSubmit={commentSubmitHandler}>
+                            <input
+                                type='text'
+                                className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="username"
+                                name="username"
+                                onChange={(e) => setUsername(e.target.value)}
+                                value={username}
+                            >
+                            </input>
+                            <textarea
+                                name="comment"
+                                className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                rows="4"
+                                placeholder="Add a comment..."
+                                onChange={(e) => setComment(e.target.value)}
+                                value={comment}
+                            ></textarea>
+                            <div className="mt-4 flex justify-end">
+                                <button
+                                    type="submit"
+                                    className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 
-                <div className="text-center lg:max-w-2xl mx-auto -mt-80">
-                    <p className="text-base font-semibold leading-7 text-indigo-600">{data[2]}</p>
-                    <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[0]}</h1>
-                    <p className="mt-6 text-xl leading-8 text-gray-700">
-                        {data[1]}
-                    </p>
+                                >
+                                    Post Comment
+                                </button>
+                            </div>
+                        </form>
+                        <div className="mt-8 space-y-4">
+                            {post.comments && Object.values(post.comments).map((comment) => (
+                                <div key={comment._id} className="p-4 border border-gray-300 rounded-md shadow-sm">
+                                    <p className="text-sm font-semibold text-gray-900">{comment.username}</p>
+                                    <p className="mt-2 text-gray-700">{comment.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
-    )
+    );
 }

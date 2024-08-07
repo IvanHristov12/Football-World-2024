@@ -28,5 +28,24 @@ Softuni React Project
  - [x] Forum
    - [x] Post Details Link
    - [x] Details route
-   - [ ] Details page
+   - [x] Details page
+     - [ ] Likes
+   - [x] Create Forum Post Page
+   - [ ] Create Forum Post Page Functionality
  - [x] About us 
+## 5. Comments
+  - [x] Post comments to server
+  - [x] Read comments from server
+  - [x] Update comments in the component
+  - [x] Add comments in the component
+  - [x] Clear form
+## 6. API Hooks
+  - [ ] PostAPI Hooks
+  - [ ] Comment Hooks
+## 6. Authentication
+  - [ ] Auth API
+  - [ ] Auth API Hook
+  - [ ] Auth state & context
+  - [ ] Login
+  - [ ] Register
+  - [ ] Logout
