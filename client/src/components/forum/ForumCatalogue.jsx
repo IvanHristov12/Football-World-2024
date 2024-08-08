@@ -11,8 +11,6 @@ export default function ForumCatalogue() {
 
     const url = 'http://localhost:3030/jsonstore/posts';
     const { data: posts, isFetching, refetch } = useFetch(url, []);
-
-    //console.log(posts);
     const [isCreatingPost, setIsCreatingPost] = useState(false);
     
 

@@ -4,25 +4,20 @@ import Spinner from "../../spinner/Spinner";
 import { useEffect, useState } from "react";
 import commentsApi from "../../../api/comments-api";
 import postAPI from "../../../api/posts-api";
+import { useGetOnePost } from "../../../hooks/usePosts";
 
 export default function ForumPostDetails() {
-    const [post, setPost] = useState({});
-
+    
     const { postId } = useParams();
     const url = `http://localhost:3030/jsonstore/posts/${postId}`;
     const { data, isFetching } = useFetch(url, []);
-
+    
+    const [post, setPost] = useGetOnePost(postId);
     const [username, setUsername] = useState('');
     const [comment, setComment] = useState('');
 
 
-    useEffect(() => {
-        (async () => {
-            const result = await postAPI.getOne(postId);
-
-            setPost(result);
-        })()
-    }, [])
+    
 
     const commentSubmitHandler = async (e) => {
         e.preventDefault();

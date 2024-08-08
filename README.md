@@ -1,5 +1,6 @@
 # Football World 2024
-Softuni React Project 
+This is a React SPA project meant to handle basic CRUD operations. 
+Serving as a project for Softuni React 2024
 
 ## 1. Initialize Project
  - [x] Initialize git repository
@@ -40,12 +41,18 @@ Softuni React Project
   - [x] Add comments in the component
   - [x] Clear form
 ## 6. API Hooks
-  - [ ] PostAPI Hooks
+  - [x] Form Hook
+  - [x] PostAPI Hooks
   - [ ] Comment Hooks
-## 6. Authentication
+## 7. Authentication
   - [ ] Auth API
   - [ ] Auth API Hook
   - [ ] Auth state & context
   - [ ] Login
   - [ ] Register
   - [ ] Logout
+## 8. UI Implementation
+  - [ ] Dynamic Navigation
+  - [ ] Create post 
+    - [ ] Api function
+    - [ ] Create hook
