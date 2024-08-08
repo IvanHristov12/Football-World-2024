@@ -5,7 +5,6 @@ export const useLogin = () => {
             const result = await login(email, password);
 
             console.log(result);
-            
             // TODO: update app state
     }
 
