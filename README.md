@@ -56,3 +56,5 @@ Serving as a project for Softuni React 2024
   - [ ] Create post 
     - [ ] Api function
     - [ ] Create hook
+   - [ ] Details page
+ - [x] About us 
