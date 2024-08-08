@@ -46,6 +46,8 @@ Serving as a project for Softuni React 2024
   - [ ] Comment Hooks
 ## 7. Authentication
   - [ ] Auth API
+    - [x] Login
+    - [ ] Register
   - [ ] Auth API Hook
   - [ ] Auth state & context
   - [ ] Login
