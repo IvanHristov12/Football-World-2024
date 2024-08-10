@@ -53,11 +53,12 @@ Serving as a project for Softuni React 2024
     - [x] Login
     - [ ] Register
     - [ ] Logout
-  - [ ] Auth state & context
-  - [ ] Token management
+  - [x] Auth state & context
+  - [x] Token management
   - [x] Login
   - [ ] Register
   - [ ] Logout
+  - [ ] Authorized Requests
 ## 8. UI Implementation
   - [ ] Dynamic Navigation
   - [ ] Create post 

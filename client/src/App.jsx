@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Routes, Route } from "react-router-dom"
 
 import Header from "./components/header/Header"
@@ -11,31 +12,47 @@ import NotFound from "./components/notFound/NotFound"
 import ForumCatalogue from "./components/forum/ForumCatalogue"
 import CreatePost from "./components/forum/createPost/createPost"
 import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
+import { AuthContext } from "./contexts/AuthContext"
 
 function App() {
+    const [authState, setAuthState] = useState({});
+
+    const changeAuthState = (state) => {
+        setAuthState(state)
+    }
+
+    const contextData = {
+        email: authState.email,
+        accessToken: authState.accessToken,
+        isAuthenticated: !!authState.email,
+        //password: authState.password,
+        changeAuthState,
+    };
+
     return (
+        <AuthContext.Provider value={contextData}>
+            <div className="bg-white">
+                <Header />
 
-        <div className="bg-white">
-            <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/forum" element={<ForumCatalogue />} />
+                    <Route path="/forum/:postId" element={<ForumPostDetails />} />
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/forum" element={<ForumCatalogue />} />
-                <Route path="/forum/:postId" element={<ForumPostDetails />} />
-
-                <Route path="createpost" element={<CreatePost />} />
-                <Route path="/aboutus" element={<AboutUs />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                    <Route path="createpost" element={<CreatePost />} />
+                    <Route path="/aboutus" element={<AboutUs />} />
+                    <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
 
-                <Route path="*" element={<NotFound />} />
+                    <Route path="*" element={<NotFound />} />
 
-            </Routes>
+                </Routes>
 
-            <Footer />
-        </div>
+                <Footer />
+            </div >
+        </AuthContext.Provider>
     )
 }
 
