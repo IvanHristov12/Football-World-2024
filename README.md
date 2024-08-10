@@ -56,7 +56,7 @@ Serving as a project for Softuni React 2024
   - [x] Auth state & context
   - [x] Token management
   - [x] Login
-  - [ ] Register
+  - [x] Register
   - [ ] Logout
   - [ ] Authorized Requests
 ## 8. UI Implementation
