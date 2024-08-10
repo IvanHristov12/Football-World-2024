@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import postAPI from "../api/posts-api";
 
+
 export function useGetAllPosts() {
     const [posts, setPosts] = useState([]);
 
@@ -30,4 +31,12 @@ export function useGetOnePost(postId) {
         post,
         setPost
     ];
+}
+
+export function useCreatePost() {
+    const postCreateHandler = (postData) => {
+        postAPI.create(postData)
+    } 
+
+    return postCreateHandler
 }

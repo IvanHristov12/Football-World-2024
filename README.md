@@ -60,9 +60,8 @@ Serving as a project for Softuni React 2024
   - [ ] Logout
   - [ ] Authorized Requests
 ## 8. UI Implementation
-  - [ ] Dynamic Navigation
+  - [x] Dynamic Navigation
   - [ ] Create post 
     - [ ] Api function
     - [ ] Create hook
-   - [ ] Details page
  - [x] About us 

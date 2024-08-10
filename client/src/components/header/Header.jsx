@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
     Popover,
@@ -6,13 +7,9 @@ import {
     PopoverGroup,
     PopoverPanel,
 } from '@headlessui/react';
-import {
-    Bars3Icon,
-    XMarkIcon,
-} from '@heroicons/react/24/outline';
+
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { FR, DE, IT, ES, GB } from 'country-flag-icons/react/3x2';
-import { AuthContext } from '../../contexts/AuthContext';
 
 const competitions = [
     { name: 'England', description: 'Premier League', to: '#', icon: GB },
