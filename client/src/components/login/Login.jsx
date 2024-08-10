@@ -2,20 +2,25 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { useLogin } from '../../hooks/useAuth';
 
+
+const initialValues = { email: '', password: '' }
+
 export default function Login() {
+    
     const navigate = useNavigate()
     const login = useLogin();
-    const { values, changeHandler, submitHandler } = useForm(
-        { email: '', password: '' },
-        async ({ email, password }) => {
-            try {
-                await login(email, password);
-                navigate('/')
-            } catch (err) {
-                console.log(err.message);
-                
-            }
+    const loginHandler = async ({ email, password }) => {
+        try {
+            await login(email, password);
+            navigate('/')
+        } catch (err) {
+            console.error(err.message);
         }
+    }
+    const { values, changeHandler, submitHandler } = useForm(
+        initialValues,
+        loginHandler
+
     );
 
     return (
@@ -37,6 +42,7 @@ export default function Login() {
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Email address
+                                
                             </label>
                             <div className="mt-2">
                                 <input
@@ -71,6 +77,8 @@ export default function Login() {
                                 />
                             </div>
                         </div>
+
+                        
 
                         <div>
                             <button
