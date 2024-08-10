@@ -47,11 +47,11 @@ Serving as a project for Softuni React 2024
 ## 7. Authentication
   - [ ] Auth API
     - [x] Login
-    - [ ] Register
+    - [x] Register
     - [ ] Logout
   - [ ] Auth API Hook
     - [x] Login
-    - [ ] Register
+    - [x] Register
     - [ ] Logout
   - [x] Auth state & context
   - [x] Token management
