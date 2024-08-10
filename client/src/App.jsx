@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Routes, Route } from "react-router-dom"
+import { AuthContext } from "./contexts/AuthContext"
 
 import Header from "./components/header/Header"
 import Home from "./components/home/Home"
@@ -12,9 +13,9 @@ import NotFound from "./components/notFound/NotFound"
 import ForumCatalogue from "./components/forum/ForumCatalogue"
 import CreatePost from "./components/forum/createPost/createPost"
 import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
-import { AuthContext } from "./contexts/AuthContext"
 
 function App() {
+    // TODO: Remove this from App component
     const [authState, setAuthState] = useState({});
 
     const changeAuthState = (state) => {
@@ -22,6 +23,7 @@ function App() {
     }
 
     const contextData = {
+        userId: authState._id,
         email: authState.email,
         accessToken: authState.accessToken,
         isAuthenticated: !!authState.email,
