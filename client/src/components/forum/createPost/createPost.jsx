@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import { useCreatePost } from "../../../hooks/usePosts";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const initialValues = {
     title: '',
@@ -8,12 +10,17 @@ const initialValues = {
 }
 
 export default function CreatePost({ onClose }) {
+    const { username } = useContext(AuthContext)
     const navigate = useNavigate();
     const createPostt = useCreatePost()
-    
+
     const createHandler = async (values) => {
         try {
-            const { _id: postId } = await createPostt(values);
+            const postData = {
+                ...values,
+                username
+            }
+            const { _id: postId } = await createPostt(postData);
 
             navigate(`/forum/${postId}`)
         } catch (err) {
@@ -41,6 +48,9 @@ export default function CreatePost({ onClose }) {
             >
                 <h2 className="text-3xl font-bold mb-6">Create Post</h2>
                 <form onSubmit={submitHandler}>
+                    <div className="mb-6">
+                        <label className="block text-lg font-medium text-gray-700">Your username: {username}</label>
+                    </div>
                     <div className="mb-6">
                         <label className="block text-lg font-medium text-gray-700">Title</label>
                         <input

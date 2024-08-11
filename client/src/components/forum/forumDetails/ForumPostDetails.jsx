@@ -10,6 +10,7 @@ export default function ForumPostDetails() {
     const { postId } = useParams();
     const url = `http://localhost:3030/data/posts/${postId}`;
     const { data, isFetching } = useFetch(url, []);
+    console.log(data);
     
     const [post, setPost] = useGetOnePost(postId);
     const [username, setUsername] = useState('');
@@ -69,9 +70,9 @@ export default function ForumPostDetails() {
             ) : (
                 <div className="lg:max-w-2xl mx-auto mt-16">
                     <div className="text-center">
-                        <p className="text-base font-semibold leading-7 text-indigo-600">{data[2]}</p>
-                        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[0]}</h1>
-                        <p className="mt-6 text-xl leading-8 text-gray-700">{data[1]}</p>
+                        <p className="text-base font-semibold leading-7 text-indigo-600">{data[3]}</p>
+                        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[1]}</h1>
+                        <p className="mt-6 text-xl leading-8 text-gray-700">{data[2]}</p>
                     </div>
                     <div className="mt-6 flex items-center justify-center space-x-4">
                         <button
@@ -88,7 +89,7 @@ export default function ForumPostDetails() {
                             <input
                                 type='text'
                                 className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                                placeholder="username"
+                                placeholder="Your name"
                                 name="username"
                                 onChange={(e) => setUsername(e.target.value)}
                                 value={username}
