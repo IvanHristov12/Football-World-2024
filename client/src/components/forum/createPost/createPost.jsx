@@ -9,13 +9,13 @@ const initialValues = {
 
 export default function CreatePost({ onClose }) {
     const navigate = useNavigate();
-    const createPost = useCreatePost()
+    const createPostt = useCreatePost()
     
     const createHandler = async (values) => {
         try {
-            const { _id } = await createPost(values);
+            const { _id: postId } = await createPostt(values);
 
-            navigate(`/posts/${_id}`)
+            navigate(`/forum/${postId}`)
         } catch (err) {
             // TODO: set error state and display error
             console.log(err.message);

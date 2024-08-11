@@ -34,9 +34,7 @@ export function useGetOnePost(postId) {
 }
 
 export function useCreatePost() {
-    const postCreateHandler = (postData) => {
-        postAPI.create(postData)
-    } 
-
-    return postCreateHandler
+    const postCreateHandler = (postData) => postAPI.create(postData)
+    
+    return postCreateHandler;
 }

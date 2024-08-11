@@ -11,7 +11,7 @@ import PostListItem from './PostListItem';
 export default function ForumCatalogue() {
     const { isAuthenticated } = useContext(AuthContext);
 
-    const url = 'http://localhost:3030/jsonstore/posts';
+    const url = 'http://localhost:3030/data/posts';
     const { data: posts, isFetching, refetch } = useFetch(url, []);
     const [isCreatingPost, setIsCreatingPost] = useState(false);
 

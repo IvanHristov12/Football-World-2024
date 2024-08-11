@@ -1,15 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import Spinner from "../../spinner/Spinner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import commentsApi from "../../../api/comments-api";
-import postAPI from "../../../api/posts-api";
 import { useGetOnePost } from "../../../hooks/usePosts";
 
 export default function ForumPostDetails() {
     
     const { postId } = useParams();
-    const url = `http://localhost:3030/jsonstore/posts/${postId}`;
+    const url = `http://localhost:3030/data/posts/${postId}`;
     const { data, isFetching } = useFetch(url, []);
     
     const [post, setPost] = useGetOnePost(postId);
