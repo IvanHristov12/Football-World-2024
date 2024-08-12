@@ -1,6 +1,5 @@
-import { useState } from "react"
 import { Routes, Route } from "react-router-dom"
-import { AuthContext } from "./contexts/AuthContext"
+import { AuthContextProvider } from "./contexts/AuthContext"
 
 import Header from "./components/header/Header"
 import Home from "./components/home/Home"
@@ -15,28 +14,9 @@ import CreatePost from "./components/forum/createPost/createPost"
 import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
 
 function App() {
-    // TODO: Remove this from App component
-    const [authState, setAuthState] = useState({});
-
-    const changeAuthState = (state) => {
-        // TODO: Implement persisted authState
-        localStorage.setItem('accessToken', state.accessToken); // Needs to be improved/patched
-
-        setAuthState(state)
-    }
-
-    const contextData = {
-        userId: authState._id,
-        email: authState.email,
-        username: authState.username,
-        accessToken: authState.accessToken,
-        isAuthenticated: !!authState.email,
-        //password: authState.password,
-        changeAuthState,
-    };
 
     return (
-        <AuthContext.Provider value={contextData}>
+        <AuthContextProvider>
             <div className="bg-white">
                 <Header />
 
@@ -58,7 +38,7 @@ function App() {
 
                 <Footer />
             </div >
-        </AuthContext.Provider>
+        </AuthContextProvider>
     )
 }
 

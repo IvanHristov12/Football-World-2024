@@ -1,28 +1,36 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import Spinner from "../../spinner/Spinner";
-import { useState } from "react";
-import commentsApi from "../../../api/comments-api";
+import { useContext, useState } from "react";
 import { useGetOnePost } from "../../../hooks/usePosts";
+import { AuthContext } from "../../../contexts/AuthContext";
+import commentsAPI from "../../../api/comments-api";
 
 export default function ForumPostDetails() {
-    
+
+    const { username: usernamee, isAuthenticated } = useContext(AuthContext)
+
     const { postId } = useParams();
     const url = `http://localhost:3030/data/posts/${postId}`;
     const { data, isFetching } = useFetch(url, []);
-    console.log(data);
     
     const [post, setPost] = useGetOnePost(postId);
-    const [username, setUsername] = useState('');
+    //const [username, setUsername] = useState('');
     const [comment, setComment] = useState('');
-
-
+    
     
 
+        const allComments = commentsAPI.getAll(postId);
+        console.log(allComments);
+    
+    
+    
+    
+    
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
-
-        const newComment = await commentsApi.create(postId, username, comment);
+        
+        const newComment = await commentsAPI.create(postId, usernamee, comment);
 
         setPost(prevState => ({
             ...prevState,
@@ -32,10 +40,11 @@ export default function ForumPostDetails() {
             }
         }))
 
-        setUsername('');
+        //setUsername('');
         setComment('');
-
     }
+
+    //console.log(post.comments);
 
     return (
         <div className="relative isolate overflow-hidden bg-white h-screen px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -74,45 +83,47 @@ export default function ForumPostDetails() {
                         <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[1]}</h1>
                         <p className="mt-6 text-xl leading-8 text-gray-700">{data[2]}</p>
                     </div>
-                    <div className="mt-6 flex items-center justify-center space-x-4">
-                        <button
-                            type="button"
-                            className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Like
-                        </button>
-                        <span className="text-xl text-gray-700">0 Likes</span>
-                    </div>
+                    {isAuthenticated &&
+                        (
+                            <div className="mt-6 flex items-center justify-center space-x-4">
+                                <button
+                                    type="button"
+                                    className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    Like
+                                </button>
+                                <span className="text-xl text-gray-700">0 Likes</span>
+                            </div>
+                        )
+                    }
                     <div className="mt-12">
                         <h2 className="text-2xl font-bold text-gray-900">Comments</h2>
+                            {isAuthenticated &&
+                                (
                         <form className="mt-6" onSubmit={commentSubmitHandler}>
-                            <input
-                                type='text'
-                                className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                                placeholder="Your name"
-                                name="username"
-                                onChange={(e) => setUsername(e.target.value)}
-                                value={username}
-                            >
-                            </input>
-                            <textarea
-                                name="comment"
-                                className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                                rows="4"
-                                placeholder="Add a comment..."
-                                onChange={(e) => setComment(e.target.value)}
-                                value={comment}
-                            ></textarea>
+                            <div className="mb-6">
+                                <label className="block text-sm font-semibold leading-6 text-gray-900 text-center">Your username: {usernamee}</label>
+                            </div>
+                                    <textarea
+                                        name="comment"
+                                        className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                        rows="4"
+                                        placeholder="Add a comment..."
+                                        onChange={(e) => setComment(e.target.value)}
+                                        value={comment}
+                                    ></textarea>
                             <div className="mt-4 flex justify-end">
                                 <button
                                     type="submit"
                                     className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-
-                                >
+                                    
+                                    >
                                     Post Comment
                                 </button>
                             </div>
                         </form>
+                                )
+                            }
                         <div className="mt-8 space-y-4">
                             {post.comments && Object.values(post.comments).map((comment) => (
                                 <div key={comment._id} className="p-4 border border-gray-300 rounded-md shadow-sm">
