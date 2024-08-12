@@ -58,10 +58,10 @@ Serving as a project for Softuni React 2024
   - [x] Login
   - [x] Register
   - [ ] Logout
-  - [ ] Authorized Requests
+  - [x] Authorized Requests
 ## 8. UI Implementation
   - [x] Dynamic Navigation
-  - [ ] Create post 
-    - [ ] Api function
-    - [ ] Create hook
+  - [x] Create post 
+    - [x] Api function
+    - [x] Create hook
  - [x] About us 

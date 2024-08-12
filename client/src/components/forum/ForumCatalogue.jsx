@@ -13,7 +13,7 @@ export default function ForumCatalogue() {
     const { isAuthenticated } = useContext(AuthContext);
 
     const url = 'http://localhost:3030/data/posts';
-    const { data: posts, isFetching, refetch } = useFetch(url, []);
+    const { data: posts, isFetching, error ,refetch } = useFetch(url, []);
     //const [posts, setPosts, isFetching] = useGetAllPosts();
     console.log(posts);
     
@@ -51,7 +51,7 @@ export default function ForumCatalogue() {
                         <Spinner />
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {posts.length > 0 ? (
+                            {!error ? (
                                 posts.map((post) => (
                                     <PostListItem key={post._id} {...post} />
                                 ))
