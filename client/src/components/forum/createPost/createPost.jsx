@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import { useCreatePost } from "../../../hooks/usePosts";
-import { useContext } from "react";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
 const initialValues = {
     title: '',
@@ -10,7 +9,7 @@ const initialValues = {
 }
 
 export default function CreatePost({ onClose }) {
-    const { username } = useContext(AuthContext)
+    const { username } = useAuthContext();
     const navigate = useNavigate();
     const createPostt = useCreatePost()
 

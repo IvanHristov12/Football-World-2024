@@ -1,16 +1,16 @@
-import { AuthContext } from '../../contexts/AuthContext';
-import { useContext, useState } from 'react';
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch';
 
 import CreatePost from './createPost/createPost';
 import Spinner from '../spinner/Spinner';
 import PostListItem from './PostListItem';
-import { useGetAllPosts } from '../../hooks/usePosts';
+
 
 
 export default function ForumCatalogue() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthContext();
 
     const url = 'http://localhost:3030/data/posts';
     const { data: posts, isFetching, error ,refetch } = useFetch(url, []);

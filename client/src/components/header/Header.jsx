@@ -1,5 +1,4 @@
-import { AuthContext } from '../../contexts/AuthContext';
-import { useContext } from 'react';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import {
     Popover,
@@ -20,7 +19,7 @@ const competitions = [
 ];
 
 export default function Header() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useAuthContext();
 
     return (
         <header className="absolute inset-x-0 top-0 z-50">

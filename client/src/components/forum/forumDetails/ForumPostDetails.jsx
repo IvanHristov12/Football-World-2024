@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../../hooks/useFetch";
 import Spinner from "../../spinner/Spinner";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useGetOnePost } from "../../../hooks/usePosts";
-import { AuthContext } from "../../../contexts/AuthContext";
+import { useAuthContext } from "../../../contexts/AuthContext";
 import commentsAPI from "../../../api/comments-api";
 
 export default function ForumPostDetails() {
 
-    const { username: usernamee, isAuthenticated } = useContext(AuthContext)
+    const { username: usernamee, isAuthenticated } = useAuthContext()
 
     const { postId } = useParams();
     const url = `http://localhost:3030/data/posts/${postId}`;

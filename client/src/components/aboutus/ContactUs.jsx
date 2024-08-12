@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Field, Label, Switch } from '@headlessui/react'
-import { AuthContext } from '../../contexts/AuthContext'
+import { useAuthContext } from '../../contexts/AuthContext'
 
 export default function ContactUs() {
-
-    const { username } = useContext(AuthContext)
+    const { username } = useAuthContext();
 
     const [agreed, setAgreed] = useState(false)
     const [formData, setFormData] = useState({
