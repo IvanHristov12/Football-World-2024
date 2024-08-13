@@ -32,7 +32,7 @@ Serving as a project for Softuni React 2024
    - [x] Details page
      - [ ] Likes
    - [x] Create Forum Post Page
-   - [ ] Create Forum Post Page Functionality
+   - [x] Create Forum Post Page Functionality
  - [x] About us 
 ## 5. Comments
   - [x] Post comments to server
@@ -65,3 +65,7 @@ Serving as a project for Softuni React 2024
     - [x] Api function
     - [x] Create hook
  - [x] About us 
+## 9. Refactoring
+ - [x] Extract state from App component
+ - [x] Persist auth state
+ - [ ] Comments
