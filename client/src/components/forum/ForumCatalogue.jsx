@@ -14,11 +14,9 @@ export default function ForumCatalogue() {
 
     const url = 'http://localhost:3030/data/posts';
     const { data: posts, isFetching, error ,refetch } = useFetch(url, []);
-    //const [posts, setPosts, isFetching] = useGetAllPosts();
-    //console.log(posts);
     
     const [isCreatingPost, setIsCreatingPost] = useState(false);
-
+    
 
     return (
         <>
@@ -50,13 +48,13 @@ export default function ForumCatalogue() {
                     {isFetching ? (
                         <Spinner />
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {!error ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+                            {error === undefined && posts.length == 0 ? (
+                                <p className="text-center text-gray-600">There are no posts yet</p>
+                            ) : (
                                 posts.map((post) => (
                                     <PostListItem key={post._id} {...post} />
                                 ))
-                            ) : (
-                                <p className="text-center text-gray-600">There are no posts yet</p>
                             )}
                         </div>
                     )}

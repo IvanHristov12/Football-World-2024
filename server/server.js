@@ -1339,6 +1339,16 @@
     	}
     };
     var seedData = {
+        posts: {
+            'a5ae63d8-6d75-4a35-aa87-c420b74c121d': {
+                "_ownerId": "6b71d05d-292f-4108-a078-040c75ddde9d",
+                "title": "Preseeded Post",
+                "description": "Hello!",
+                "username": "Joseph",
+                "_createdOn": 1723556368366,
+                "_id": "a5ae63d8-6d75-4a35-aa87-c420b74c121d"
+            }
+        },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
