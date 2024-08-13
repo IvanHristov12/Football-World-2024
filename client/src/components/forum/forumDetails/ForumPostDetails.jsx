@@ -15,7 +15,7 @@ export default function ForumPostDetails() {
     const createComment = useCreateComment();
     const [post] = useGetOnePost(postId);
 
-    const { username, isAuthenticated } = useAuthContext();
+    const { username, isAuthenticated, userId } = useAuthContext();
 
     const {
         changeHandler,
@@ -31,7 +31,9 @@ export default function ForumPostDetails() {
         }
         
     });
-
+    
+    const isOwner = userId === post._ownerId; // Use for Delete and Edit Buttons 
+    
     return (
         <div className="relative isolate overflow-hidden bg-white h-screen px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
             <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -109,8 +111,8 @@ export default function ForumPostDetails() {
                         }
                         <div className="mt-8 space-y-4">
                             {comments.map((comment) => (
-                                    <div key={comment._id} className="p-4 border border-gray-300 rounded-md shadow-sm">
-                                        <p className="text-sm font-semibold text-gray-900">{username}</p>
+                                <div key={comment._id} className="p-4 border border-gray-300 rounded-md shadow-sm">
+                                        <p className="text-sm font-semibold text-gray-900">{comment.author?.username || username}</p>
                                         <p className="mt-2 text-gray-700">{comment.text}</p>
                                     </div>
                                 ))

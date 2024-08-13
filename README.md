@@ -43,7 +43,7 @@ Serving as a project for Softuni React 2024
 ## 6. API Hooks
   - [x] Form Hook
   - [x] PostAPI Hooks
-  - [ ] Comment Hooks
+  - [x] Comment Hooks
 ## 7. Authentication
   - [x] Auth API
     - [x] Login
@@ -68,4 +68,4 @@ Serving as a project for Softuni React 2024
 ## 9. Refactoring
  - [x] Extract state from App component
  - [x] Persist auth state
- - [ ] Comments
+ - [x] Comments
