@@ -21,8 +21,14 @@ export default function ForumPostDetails() {
         changeHandler,
         submitHandler,
         values
-    } = useForm(initialValues, ({ comment }) => {
-        createComment(postId, comment);
+    } = useForm(initialValues, async ({ comment }) => {
+        try {
+            const newComment = await createComment(postId, comment);
+
+            setComments(oldComments => [...oldComments, newComment]);
+        } catch (err) {
+            console.log(err.message);
+        }
         
     });
 
