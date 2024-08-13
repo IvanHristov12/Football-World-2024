@@ -15,7 +15,7 @@ export default function ForumCatalogue() {
     const url = 'http://localhost:3030/data/posts';
     const { data: posts, isFetching, error ,refetch } = useFetch(url, []);
     //const [posts, setPosts, isFetching] = useGetAllPosts();
-    console.log(posts);
+    //console.log(posts);
     
     const [isCreatingPost, setIsCreatingPost] = useState(false);
 

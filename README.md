@@ -45,19 +45,19 @@ Serving as a project for Softuni React 2024
   - [x] PostAPI Hooks
   - [ ] Comment Hooks
 ## 7. Authentication
-  - [ ] Auth API
+  - [x] Auth API
     - [x] Login
     - [x] Register
-    - [ ] Logout
-  - [ ] Auth API Hook
+    - [x] Logout
+  - [x] Auth API Hook
     - [x] Login
     - [x] Register
-    - [ ] Logout
+    - [x] Logout
   - [x] Auth state & context
   - [x] Token management
   - [x] Login
   - [x] Register
-  - [ ] Logout
+  - [x] Logout
   - [x] Authorized Requests
 ## 8. UI Implementation
   - [x] Dynamic Navigation
