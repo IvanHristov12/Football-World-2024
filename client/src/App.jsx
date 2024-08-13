@@ -12,6 +12,7 @@ import NotFound from "./components/notFound/NotFound"
 import ForumCatalogue from "./components/forum/ForumCatalogue"
 import CreatePost from "./components/forum/createPost/createPost"
 import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
+import Logout from "./components/logout/Logout"
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/logout" element={<Logout />} />
                     <Route path="/forum" element={<ForumCatalogue />} />
                     <Route path="/forum/:postId" element={<ForumPostDetails />} />
 

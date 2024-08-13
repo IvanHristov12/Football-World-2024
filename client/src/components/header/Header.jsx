@@ -82,7 +82,7 @@ export default function Header() {
                     )
                     : (
                         <div className="flex flex-1 justify-end">
-                            <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
+                            <Link to="/logout" className="text-sm font-semibold leading-6 text-gray-900">
                                 Log out <span aria-hidden="true">&rarr;</span>
                             </Link>
                         </div>
