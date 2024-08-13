@@ -20,11 +20,12 @@ export default function usePersistedState(key, initialState) {
             ? value(state)
             : value;
 
-        if (newState === null) {
+        if (newState === null || newState === undefined ) {
             localStorage.removeItem(key)
         } else {
             localStorage.setItem(key, JSON.stringify(newState));
         }
+
 
         setState(newState);
     }
