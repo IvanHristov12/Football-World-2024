@@ -22,17 +22,19 @@ export function useGetAllPosts() {
 export function useGetOnePost(postId) {
     const [post, setPost] = useState({});
 
+
     useEffect(() => {
         (async () => {
-            const result = await postAPI.getOne(postId);
+                const result = await postAPI.getOne(postId);
+                
+                setPost(result);
 
-            setPost(result);
         })();
     }, [postId]);
 
     return [
         post,
-        setPost
+        setPost,
     ];
 }
 

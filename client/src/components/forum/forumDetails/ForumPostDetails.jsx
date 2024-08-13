@@ -1,50 +1,30 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../../hooks/useFetch";
-import Spinner from "../../spinner/Spinner";
-import { useState } from "react";
-import { useGetOnePost } from "../../../hooks/usePosts";
 import { useAuthContext } from "../../../contexts/AuthContext";
-import commentsAPI from "../../../api/comments-api";
+
+import { useGetOnePost } from "../../../hooks/usePosts";
+import { useForm } from "../../../hooks/useForm";
+import { useGetAllComments, useCreateComment } from "../../../hooks/useComments";
+
+const initialValues = {
+    comment: '',
+}
 
 export default function ForumPostDetails() {
-
-    const { username: usernamee, isAuthenticated } = useAuthContext()
-
     const { postId } = useParams();
-    const url = `http://localhost:3030/data/posts/${postId}`;
-    const { data, isFetching } = useFetch(url, []);
-    
-    const [post, setPost] = useGetOnePost(postId);
-    //const [username, setUsername] = useState('');
-    const [comment, setComment] = useState('');
-    
-    
+    const [comments, setComments] = useGetAllComments(postId)
+    const createComment = useCreateComment();
+    const [post] = useGetOnePost(postId);
 
-        const allComments = commentsAPI.getAll(postId);
-        console.log(allComments);
-    
-    
-    
-    
-    
-    const commentSubmitHandler = async (e) => {
-        e.preventDefault();
+    const { username, isAuthenticated } = useAuthContext();
+
+    const {
+        changeHandler,
+        submitHandler,
+        values
+    } = useForm(initialValues, ({ comment }) => {
+        createComment(postId, comment);
         
-        const newComment = await commentsAPI.create(postId, usernamee, comment);
-
-        setPost(prevState => ({
-            ...prevState,
-            comments: {
-                ...prevState.comments,
-                [newComment._id]: newComment,
-            }
-        }))
-
-        //setUsername('');
-        setComment('');
-    }
-
-    //console.log(post.comments);
+    });
 
     return (
         <div className="relative isolate overflow-hidden bg-white h-screen px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -74,14 +54,11 @@ export default function ForumPostDetails() {
                     <rect fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" width="100%" height="100%" strokeWidth={0} />
                 </svg>
             </div>
-            {isFetching ? (
-                <Spinner />
-            ) : (
                 <div className="lg:max-w-2xl mx-auto mt-16">
                     <div className="text-center">
-                        <p className="text-base font-semibold leading-7 text-indigo-600">{data[3]}</p>
-                        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{data[1]}</h1>
-                        <p className="mt-6 text-xl leading-8 text-gray-700">{data[2]}</p>
+                        <p className="text-base font-semibold leading-7 text-indigo-600">{post.username}</p>
+                        <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{post.title}</h1>
+                        <p className="mt-6 text-xl leading-8 text-gray-700">{post.description}</p>
                     </div>
                     {isAuthenticated &&
                         (
@@ -98,43 +75,45 @@ export default function ForumPostDetails() {
                     }
                     <div className="mt-12">
                         <h2 className="text-2xl font-bold text-gray-900">Comments</h2>
-                            {isAuthenticated &&
-                                (
-                        <form className="mt-6" onSubmit={commentSubmitHandler}>
-                            <div className="mb-6">
-                                <label className="block text-sm font-semibold leading-6 text-gray-900 text-center">Your username: {usernamee}</label>
-                            </div>
+                        {isAuthenticated &&
+                            (
+                                <form className="mt-6" onSubmit={submitHandler}>
+                                    <div className="mb-6">
+                                        <label className="block text-sm font-semibold leading-6 text-gray-900 text-center">Your username: {username}</label>
+                                    </div>
                                     <textarea
                                         name="comment"
                                         className="w-full p-4 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                                         rows="4"
                                         placeholder="Add a comment..."
-                                        onChange={(e) => setComment(e.target.value)}
-                                        value={comment}
+                                        onChange={changeHandler}
+                                        value={values.comment}
                                     ></textarea>
-                            <div className="mt-4 flex justify-end">
-                                <button
-                                    type="submit"
-                                    className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                    
-                                    >
-                                    Post Comment
-                                </button>
-                            </div>
-                        </form>
-                                )
-                            }
+                                    <div className="mt-4 flex justify-end">
+                                        <button
+                                            type="submit"
+                                            className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+
+                                        >
+                                            Post Comment
+                                        </button>
+                                    </div>
+                                </form>
+                            )
+                        }
                         <div className="mt-8 space-y-4">
-                            {post.comments && Object.values(post.comments).map((comment) => (
-                                <div key={comment._id} className="p-4 border border-gray-300 rounded-md shadow-sm">
-                                    <p className="text-sm font-semibold text-gray-900">{comment.username}</p>
-                                    <p className="mt-2 text-gray-700">{comment.text}</p>
-                                </div>
-                            ))}
+                            {comments.map((comment) => (
+                                    <div key={comment._id} className="p-4 border border-gray-300 rounded-md shadow-sm">
+                                        <p className="text-sm font-semibold text-gray-900">{username}</p>
+                                        <p className="mt-2 text-gray-700">{comment.text}</p>
+                                    </div>
+                                ))
+                            }
+                            {comments.length === 0 && <p>No comments yet.</p> }
                         </div>
                     </div>
                 </div>
-            )}
+            
         </div>
     );
 }
