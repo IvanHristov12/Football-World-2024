@@ -1,15 +1,17 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
 import { useGetOnePost } from "../../../hooks/usePosts";
 import { useForm } from "../../../hooks/useForm";
 import { useGetAllComments, useCreateComment } from "../../../hooks/useComments";
+import postAPI from "../../../api/posts-api";
 
 const initialValues = {
     comment: '',
 }
 
 export default function ForumPostDetails() {
+    const navigate = useNavigate();
     const { postId } = useParams();
     const [comments, setComments] = useGetAllComments(postId)
     const createComment = useCreateComment();
@@ -31,6 +33,16 @@ export default function ForumPostDetails() {
         }
 
     });
+
+    const postDeleteHandler = async () => {
+        try {
+            await postAPI.remove(postId);
+
+            navigate('/')
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
 
     const isOwner = userId === post._ownerId; 
 
@@ -79,6 +91,7 @@ export default function ForumPostDetails() {
                             </button>
                             <button
                                 type="button"
+                                onClick={postDeleteHandler}
                                 className="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                             >
                                 DELETE
