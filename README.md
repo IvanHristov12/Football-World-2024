@@ -65,6 +65,8 @@ Serving as a project for Softuni React 2024
     - [x] Api function
     - [x] Create hook
  - [x] About us 
+ - [x] Delete post
+ - [ ] Edit post
 ## 9. Refactoring
  - [x] Extract state from App component
  - [x] Persist auth state

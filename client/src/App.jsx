@@ -13,6 +13,7 @@ import ForumCatalogue from "./components/forum/ForumCatalogue"
 import CreatePost from "./components/forum/createPost/createPost"
 import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
 import Logout from "./components/logout/Logout"
+import EditPost from "./components/forum/editPost/EditPost"
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
                     <Route path="/forum" element={<ForumCatalogue />} />
                     <Route path="/forum/:postId" element={<ForumPostDetails />} />
 
-                    <Route path="createpost" element={<CreatePost />} />
+                    <Route path="/editpost" element={<EditPost />} />
+                    <Route path="/createpost" element={<CreatePost />} />
                     <Route path="/aboutus" element={<AboutUs />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
