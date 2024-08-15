@@ -30,7 +30,6 @@ Serving as a project for Softuni React 2024
    - [x] Post Details Link
    - [x] Details route
    - [x] Details page
-     - [ ] Likes
    - [x] Create Forum Post Page
    - [x] Create Forum Post Page Functionality
  - [x] About us 
@@ -66,7 +65,7 @@ Serving as a project for Softuni React 2024
     - [x] Create hook
  - [x] About us 
  - [x] Delete post
- - [ ] Edit post
+ - [x] Edit post
 ## 9. Refactoring
  - [x] Extract state from App component
  - [x] Persist auth state
