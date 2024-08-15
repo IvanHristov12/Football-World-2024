@@ -17,6 +17,8 @@ import EditPost from "./components/forum/editPost/EditPost"
 import EPLStandingsAndFixtures from "./components/competitions/england/EPLStandingsAndFixtures"
 import Ligue1StandingsAndFixtures from "./components/competitions/france/Ligue1StandingsAndFixtures"
 import BundesligaStandingsAndFixtures from "./components/competitions/germany/BundesligaStandingsAndFixtures"
+import SerieAStandingsAndFixtures from "./components/competitions/italy/SerieAStandingsAndFixtures"
+import LaLigaStandingsAndFixtures from "./components/competitions/spain/LaLigaStandingsAndFixtures"
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
                     <Route path="/EPL" element={<EPLStandingsAndFixtures />} />
                     <Route path="/LFP" element={<Ligue1StandingsAndFixtures />} />
                     <Route path="/DFL" element={<BundesligaStandingsAndFixtures />} />
+                    <Route path="/LNPA" element={<SerieAStandingsAndFixtures />} />
+                    <Route path="/NPFL" element={<LaLigaStandingsAndFixtures />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/logout" element={<Logout />} />
