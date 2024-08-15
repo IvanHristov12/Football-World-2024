@@ -22,8 +22,8 @@ const faqData = [
         answer: "Our support team is available to assist you with any inquiries. You can reach out via our contact page or through the support channels provided in your account.",
     },
     {
-        question: "How do I stay informed about updates and new features?",
-        answer: "You can stay informed by following our announcements on the website and subscribing to our email notifications for any updates and new features.",
+        question: "How do i check the status of the Servers ?",
+        answer: "You can check the Football-API Service status here: https://api-sports.betteruptime.com/",
     },
 ];
 
@@ -56,6 +56,10 @@ export default function FAQ() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className="container mx-auto p-6">
+                    {/* Creates space for extra scrolling */}
+                <div className="h-20"></div>
             </div>
         </>
     );
