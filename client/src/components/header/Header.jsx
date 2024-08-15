@@ -11,7 +11,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { FR, DE, IT, ES, GB } from 'country-flag-icons/react/3x2';
 
 const competitions = [
-    { name: 'England', description: 'Premier League', to: '#', icon: GB },
+    { name: 'England', description: 'Premier League', to: '/EPL', icon: GB },
     { name: 'Spain', description: 'LaLiga', to: '#', icon: ES },
     { name: 'Italy', description: 'Serie A', to: '#', icon: IT },
     { name: 'Germany', description: 'Bundesliga', to: '#', icon: DE },

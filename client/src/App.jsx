@@ -14,6 +14,7 @@ import CreatePost from "./components/forum/createPost/createPost"
 import ForumPostDetails from "./components/forum/forumDetails/ForumPostDetails"
 import Logout from "./components/logout/Logout"
 import EditPost from "./components/forum/editPost/EditPost"
+import EPLStandingsAndFixtures from "./components/competitions/england/EPLStandingsAndFixtures"
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
 
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/EPL" element={<EPLStandingsAndFixtures />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/logout" element={<Logout />} />
