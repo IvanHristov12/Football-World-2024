@@ -13,7 +13,7 @@ export default function ForumCatalogue() {
     const { isAuthenticated } = useAuthContext();
 
     const url = 'http://localhost:3030/data/posts';
-    const { data: posts, isFetching, error ,refetch } = useFetch(url, []);
+    const { data: posts, isFetching, error } = useFetch(url, []);
     
     const [isCreatingPost, setIsCreatingPost] = useState(false);
     

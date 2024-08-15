@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useForm } from "../../../hooks/useForm";
 import postAPI from "../../../api/posts-api";
 
@@ -9,8 +9,6 @@ const initialValues = {
 
 export default function EditPost({ onClose, post, onUpdate } ) {
     const { postId } = useParams();
-    const navigate = useNavigate();
-
 
     const {
         values,
