@@ -14,7 +14,7 @@ export default function Login() {
             await login(email, password);
             navigate('/')
         } catch (err) {
-            console.error(err.message);
+            alert(err.message)
         }
     }
     const { values, changeHandler, submitHandler } = useForm(
