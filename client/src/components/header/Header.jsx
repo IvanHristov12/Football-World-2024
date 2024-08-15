@@ -14,7 +14,7 @@ const competitions = [
     { name: 'England', description: 'Premier League', to: '/EPL', icon: GB },
     { name: 'Spain', description: 'LaLiga', to: '', icon: ES },
     { name: 'Italy', description: 'Serie A', to: '#', icon: IT },
-    { name: 'Germany', description: 'Bundesliga', to: '#', icon: DE },
+    { name: 'Germany', description: 'Bundesliga', to: '/DFL', icon: DE },
     { name: 'France', description: 'Ligue 1', to: '/LFP', icon: FR },
 ];
 
