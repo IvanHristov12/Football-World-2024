@@ -1,6 +1,23 @@
 # Football World 2024
-This is a React SPA project meant to handle basic CRUD operations. 
-Serving as a project for Softuni React 2024
+
+This project is a React Single Page Application (SPA) designed to handle basic CRUD operations within a football-focused platform. It was developed as a project for Softuni React 2024 and serves as a comprehensive demonstration of modern React practices, including the use of hooks, context, and API integration.
+
+# Features
+
+CRUD Operations: Users can create, read, update, and delete posts related to football discussions.
+API Integration: The application integrates with the Football API from API-Sports to display current standings and upcoming fixtures for various football leagues.
+Responsive Design: The application is built with Tailwind CSS, ensuring a responsive and user-friendly interface across all devices.
+Authentication: Basic authentication features are implemented to allow users to manage their own posts securely.
+
+# Important Notice
+
+The Football API used in this project has a limit of 100 requests per day as of now. Due to this limitation, some pages related to specific football competitions might not function as expected if the API request limit has been exceeded. This issue is not related to the development of the application but rather to the restrictions imposed by the API provider. If you encounter issues accessing the standings or fixtures, please try again later when the API limit resets.
+
+# API Information
+
+API Provider: API-Football by API-Sports
+Daily Request Limit: 100 requests
+Request Throttling: Please be aware of the request limit, especially during testing or when viewing competition pages multiple times.
 
 ## 1. Initialize Project
  - [x] Initialize git repository
@@ -18,12 +35,12 @@ Serving as a project for Softuni React 2024
  - [x] Preseed practice server
 ## 4. Page Implementation
  - [x] Home
- - [ ] Competitions
-   - [ ] England
-   - [ ] France
-   - [ ] Germany
-   - [ ] Italy
-   - [ ] Spain
+ - [x] Competitions
+   - [x] England
+   - [x] France
+   - [x] Germany
+   - [x] Italy
+   - [x] Spain
  - [x] Login
  - [x] Register
  - [x] Forum
