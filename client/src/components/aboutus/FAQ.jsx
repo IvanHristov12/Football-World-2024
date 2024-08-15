@@ -2,28 +2,28 @@ import { useState } from "react";
 
 const faqData = [
     {
-        question: "What's the best thing about Switzerland?",
-        answer: "I don't know, but the flag is a big plus.",
+        question: "What can I use this service for?",
+        answer: "This service provides comprehensive football data that you can integrate into your app or website to enhance user experience with live scores, statistics, and more.",
     },
     {
-        question: "How do you make holy water?",
-        answer: "You boil the hell out of it.",
+        question: "How do I get started with this service?",
+        answer: "To start using this service, sign up for an account, select a plan that suits your needs, and obtain an API key to authenticate your requests.",
     },
     {
-        question: "What do you call someone with no body and no nose?",
-        answer: "Nobody knows.",
+        question: "What kind of support is available if I have questions?",
+        answer: "We offer extensive documentation, and our support team is available to help with any questions or issues you might encounter while using the service.",
     },
     {
-        question: "Why do you never see elephants hiding in trees?",
-        answer: "Because they're so good at it.",
+        question: "Can I explore the features before committing?",
+        answer: "You can browse our comprehensive documentation and resources to understand the full capabilities of the service before getting started.",
     },
     {
-        question: "Why can't you hear a pterodactyl go to the bathroom?",
-        answer: "Because the 'P' is silent.",
+        question: "How do I get support if I need help?",
+        answer: "Our support team is available to assist you with any inquiries. You can reach out via our contact page or through the support channels provided in your account.",
     },
     {
-        question: "Why did the invisible man turn down the job offer?",
-        answer: "He couldn't see himself doing it.",
+        question: "How do I stay informed about updates and new features?",
+        answer: "You can stay informed by following our announcements on the website and subscribing to our email notifications for any updates and new features.",
     },
 ];
 
