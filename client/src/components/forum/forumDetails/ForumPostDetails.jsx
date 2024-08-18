@@ -6,7 +6,7 @@ import { useForm } from "../../../hooks/useForm";
 import { useGetAllComments, useCreateComment } from "../../../hooks/useComments";
 import postAPI from "../../../api/posts-api";
 import { useState } from "react";
-import EditPost from "../editPost/EditPost";
+import EditPost from "../editPost/editPost";
 
 const initialValues = {
     comment: '',
